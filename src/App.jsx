@@ -2,12 +2,15 @@ import { useEffect } from "react";
 import Dash from "./Components/Dash/Dash";
 import Header from "./Components/Header/Header";
 import { useState } from "react";
+import Searchbar from "./components/searchbar/Searchbar";
 
-const App = ({ city }) => {
+const App = ({}) => {
+  const [city, setCity] = useState();
   const [weatherData, setWeatherData] = useState(undefined);
 
   useEffect(() => {
-    fetchWeatherData(city);
+    if (city) fetchWeatherData(city);
+    // console.log(city);
   }, [city]);
 
   const fetchWeatherData = async (city) => {
@@ -20,15 +23,19 @@ const App = ({ city }) => {
     setWeatherData(data);
   };
 
+  const updateCity = (city) => {
+    setCity(city);
+  };
+
   console.log("weatherDataState", weatherData);
 
   return (
     <>
       <h3>Weather-App</h3>
       <Header />
-
+      <Searchbar updateCity={updateCity} city={city} />
       {!weatherData ? (
-        <h2>Loading...</h2>
+        <h2>Please enter a city</h2>
       ) : (
         <>
           {weatherData.cod != 200 ? (
