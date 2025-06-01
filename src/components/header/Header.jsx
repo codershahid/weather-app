@@ -3,7 +3,7 @@ import styles from "./header.module.scss";
 const Header = () => {
   return (
     <div className={styles.header}>
-      <h3>Weather App Logo</h3>
+      <h2>Weatherastic</h2>
     </div>
   );
 };

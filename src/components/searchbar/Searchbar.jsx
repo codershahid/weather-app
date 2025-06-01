@@ -1,8 +1,8 @@
-import React from "react";
+import styles from "./Searchbar.module.scss";
 
 const Searchbar = ({ updateCity, city }) => {
   return (
-    <div>
+    <div className={styles.searchbar}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -12,7 +12,7 @@ const Searchbar = ({ updateCity, city }) => {
         }}
       >
         <label htmlFor="city">
-          <p>City:</p>
+          <span>City:</span>
           <input type="text" id="city" name="city" />
         </label>
         <button type="submit">Submit</button>
