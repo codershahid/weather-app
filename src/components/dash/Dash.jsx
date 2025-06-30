@@ -9,7 +9,7 @@ const Dash = ({ weatherData }) => {
       : Math.round((temp * 9) / 5 - 459.67) + "°F";
   };
   return (
-    <div>
+    <div style={{ background: "#ADD8E6", padding: "20px" }}>
       <h1>{weatherData.name}</h1>
       <h2>
         {" "}
@@ -17,6 +17,13 @@ const Dash = ({ weatherData }) => {
         {" , "}
         {weatherData.coord.lat}
       </h2>
+      {weatherData && (
+        <img
+          src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+          alt={weatherData.weather[0].description}
+          className="weather-icon"
+        />
+      )}
       <p>
         <label htmlFor="unitType">View in Fahrenheit</label>{" "}
         <input
